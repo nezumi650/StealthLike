@@ -32,4 +32,9 @@ $(function() {
             }
         }
     });
+
+    stealthLikeBtn.click(function () {
+        console.log(window.getSelection());
+        return false;
+    });
 });
