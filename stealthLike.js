@@ -17,7 +17,7 @@ footerElm.appendChild(buttonElement);
 // post comment with selected text
 function postLikeComment(comment) {
     var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
-    commentForm.value = '> ' + comment;
+    commentForm.value = "Stealth Liked:\n > " + comment;
 
     var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type="submit"]:last-child');
     var mouseEvents = document.createEvent("MouseEvents");
