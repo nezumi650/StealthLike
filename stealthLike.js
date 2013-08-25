@@ -17,14 +17,14 @@ footerElm.appendChild(buttonElement);
 
 
 $(function() {
-    var topBtn = $('#stealth-like-button');   
-    topBtn.hide();
+    var stealthLikeBtn = $('#stealth-like-button');   
+    stealthLikeBtn.hide();
     // 少しでもスクロールしたら表示
     $(window).scroll(function () {
         if ($(this).scrollTop() > 1) {
-            topBtn.fadeIn();
+            stealthLikeBtn.fadeIn();
         } else {
-            topBtn.fadeOut();
+            stealthLikeBtn.fadeOut();
         }
     });
 });
