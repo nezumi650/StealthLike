@@ -21,10 +21,15 @@ $(function() {
     stealthLikeBtn.hide();
     // 少しでもスクロールしたら表示
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 1) {
-            stealthLikeBtn.fadeIn();
-        } else {
-            stealthLikeBtn.fadeOut();
+        var currentUrl = location.href;
+        result1 = currentUrl.match(/github\.com.*pull/);
+        result2 = currentUrl.match(/commits$/);
+        if (result1 && !result2) {
+            if ($(this).scrollTop() > 1) {
+                stealthLikeBtn.fadeIn();
+            } else {
+                stealthLikeBtn.fadeOut();
+            }
         }
     });
 });
