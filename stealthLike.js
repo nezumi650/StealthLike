@@ -10,9 +10,21 @@ buttonElement.style.cssText = "position: fixed;"
                             + "bottom: 20px;"
                             + "right: 20px;";
 
-// --discussions
 var footerElm = document.querySelector('div .site-footer');
 footerElm.appendChild(buttonElement);
+
+
+// post comment with selected text
+function postLikeComment(comment) {
+    var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
+    commentForm.value = '> ' + comment;
+
+    var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type="submit"]:last-child');
+    var mouseEvents = document.createEvent("MouseEvents");
+    mouseEvents.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    submitButton.dispatchEvent( mouseEvents );
+}
+
 
 
 
@@ -34,7 +46,7 @@ $(function() {
     });
 
     stealthLikeBtn.click(function () {
-        console.log(window.getSelection());
+        postLikeComment(window.getSelection());
         return false;
     });
 });
