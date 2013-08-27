@@ -1,5 +1,7 @@
 //'use strict';
 
+var defaultComment = 'Stealth Liked';
+
 // add a stealth-like-button
 var buttonElement = document.createElement('img');
 buttonElement.id = 'stealth-like-button';
@@ -17,12 +19,32 @@ footerElement.appendChild(buttonElement);
 // post comment with selected text
 function postLikeComment(comment) {
     var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^=\'comment_body_\']' );
-    commentForm.value = "Stealth Liked:\n > " + comment;
+    commentForm.value = defaultComment + ' :+1:' + "\n" + ' > ' + comment;
 
     var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type=\'submit\']:last-child');
     var mouseEvents = document.createEvent('MouseEvents');
     mouseEvents.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
     submitButton.dispatchEvent( mouseEvents );
+}
+
+function hideStealthComments() {
+    var discussionBubbles = document.querySelectorAll('.discussion-bubble');
+    for (var i = 0; i < discussionBubbles.length; i++) {
+        var discussionBubble = discussionBubbles[i];
+        var commentBody      = discussionBubble.querySelector('.comment-body');
+        
+        if (commentBody != null) {
+            var commentBodyText = commentBody.textContent;
+            if (commentBodyText.search(defaultComment) != -1) {
+                var blockquoteBody  = discussionBubble.querySelector('blockquote p');
+                if (blockquoteBody != null) {
+                    console.log(blockquoteBody.innerHTML); //ハイライトの準備
+                }
+                discussionBubble.style.display = 'none';
+            }
+
+        }
+    }
 }
 
 
@@ -31,6 +53,7 @@ function postLikeComment(comment) {
 (function() {
     var stealthLikeButton = $('#stealth-like-button');   
     stealthLikeButton.hide();
+
     // 少しでもスクロールしたら表示
     $(window).scroll(function () {
         var currentUrl    = location.href;
@@ -49,4 +72,11 @@ function postLikeComment(comment) {
         postLikeComment(window.getSelection());
         return false;
     });
+
+    // 非推奨..
+    var targetElement = document.querySelector('.js-task-list-container');
+    targetElement.addEventListener("DOMNodeInserted", function () {
+        hideStealthComments();
+    });
+
 })();
