@@ -28,7 +28,7 @@ function postLikeComment(comment) {
 
 
 
-$(function() {
+(function() {
     var stealthLikeBtn = $('#stealth-like-button');   
     stealthLikeBtn.hide();
     // 少しでもスクロールしたら表示
@@ -49,4 +49,4 @@ $(function() {
         postLikeComment(window.getSelection());
         return false;
     });
-});
+})();
