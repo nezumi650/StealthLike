@@ -10,8 +10,8 @@ buttonElement.style.cssText = 'position: fixed;'
                             + 'bottom: 20px;'
                             + 'right: 20px;';
 
-var footerElm = document.querySelector('div .site-footer');
-footerElm.appendChild(buttonElement);
+var footerElement = document.querySelector('div .site-footer');
+footerElement.appendChild(buttonElement);
 
 
 // post comment with selected text
@@ -29,8 +29,8 @@ function postLikeComment(comment) {
 
 
 (function() {
-    var stealthLikeBtn = $('#stealth-like-button');   
-    stealthLikeBtn.hide();
+    var stealthLikeButton = $('#stealth-like-button');   
+    stealthLikeButton.hide();
     // 少しでもスクロールしたら表示
     $(window).scroll(function () {
         var currentUrl = location.href;
@@ -38,14 +38,14 @@ function postLikeComment(comment) {
         result2 = currentUrl.match(/commits$/);
         if (result1 && !result2) {
             if ($(this).scrollTop() > 1) {
-                stealthLikeBtn.fadeIn();
+                stealthLikeButton.fadeIn();
             } else {
-                stealthLikeBtn.fadeOut();
+                stealthLikeButton.fadeOut();
             }
         }
     });
 
-    stealthLikeBtn.click(function () {
+    stealthLikeButton.click(function () {
         postLikeComment(window.getSelection());
         return false;
     });
