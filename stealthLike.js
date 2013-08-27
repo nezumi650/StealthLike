@@ -29,22 +29,44 @@ function postLikeComment(comment) {
 
 function hideStealthComments() {
     var discussionBubbles = document.querySelectorAll('.discussion-bubble');
+    var targetTextsArray  = [];
+
     for (var i = 0; i < discussionBubbles.length; i++) {
         var discussionBubble = discussionBubbles[i];
         var commentBody      = discussionBubble.querySelector('.comment-body');
-        
+
         if (commentBody != null) {
             var commentBodyText = commentBody.textContent;
             if (commentBodyText.search(defaultComment) != -1) {
                 var blockquoteBody  = discussionBubble.querySelector('blockquote p');
                 if (blockquoteBody != null) {
-                    console.log(blockquoteBody.innerHTML); //ハイライトの準備
+                    targetTextsArray.push(blockquoteBody.innerHTML);
                 }
                 discussionBubble.style.display = 'none';
+                discussionBubble.remove();
             }
 
         }
     }
+
+//    hilightStealthComments(targetTextsArray);
+}
+
+function hilightStealthComment(targetHtml, targetText) {
+        return targetHtml.replace(targetText, '<span style=\'background-color:yellow\' >' + targetText + '</span>');
+}
+
+function hilightStealthComments(targetTextArray) {
+    var jsDiscussionElement = document.querySelector('.js-discussion');
+    var targetHtml          = jsDiscussionElement.innerHTML;
+    var replacedHtml        = '';
+
+    for (var i = 0; i < targetTextArray.length; i++) {
+        var targetText = targetTextArray[i];
+        replacedHtml   = hilightStealthComment(targetHtml, targetText);
+        targetHtml     = replacedHtml;
+    }
+    document.querySelector('.js-discussion').innerHTML = replacedHtml;
 }
 
 
