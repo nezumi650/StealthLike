@@ -1,4 +1,4 @@
-//"use strict";
+//'use strict';
 
 // add a stealth-like-button
 var buttonElement = document.createElement('img');
@@ -6,9 +6,9 @@ buttonElement.id = 'stealth-like-button';
 buttonElement.src = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png';
 buttonElement.width  = 50;
 buttonElement.height = 50;
-buttonElement.style.cssText = "position: fixed;"
-                            + "bottom: 20px;"
-                            + "right: 20px;";
+buttonElement.style.cssText = 'position: fixed;'
+                            + 'bottom: 20px;'
+                            + 'right: 20px;';
 
 var footerElm = document.querySelector('div .site-footer');
 footerElm.appendChild(buttonElement);
@@ -16,12 +16,12 @@ footerElm.appendChild(buttonElement);
 
 // post comment with selected text
 function postLikeComment(comment) {
-    var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
+    var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^=\'comment_body_\']' );
     commentForm.value = "Stealth Liked:\n > " + comment;
 
-    var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type="submit"]:last-child');
-    var mouseEvents = document.createEvent("MouseEvents");
-    mouseEvents.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type=\'submit\']:last-child');
+    var mouseEvents = document.createEvent('MouseEvents');
+    mouseEvents.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
     submitButton.dispatchEvent( mouseEvents );
 }
 
