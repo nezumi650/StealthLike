@@ -33,10 +33,10 @@ function postLikeComment(comment) {
     stealthLikeButton.hide();
     // 少しでもスクロールしたら表示
     $(window).scroll(function () {
-        var currentUrl = location.href;
-        result1 = currentUrl.match(/github\.com.*pull/);
-        result2 = currentUrl.match(/commits$/);
-        if (result1 && !result2) {
+        var currentUrl    = location.href;
+        var isGithub      = currentUrl.match(/github\.com.*pull/);
+        var isCommitsPage = currentUrl.match(/commits$/);
+        if (isGithub && !isCommitsPage) {
             if ($(this).scrollTop() > 1) {
                 stealthLikeButton.fadeIn();
             } else {
