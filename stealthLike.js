@@ -7,6 +7,8 @@
 // @include             https://github.com/*
 // ==/UserScript==
 
+(function() {
+
 var defaultComment = 'Stealth Liked';
 
 // add a stealth-like-button
@@ -77,9 +79,6 @@ function hilightStealthComments(targetTextArray) {
 }
 
 
-
-
-(function() {
     var stealthLikeButton = $('#stealth-like-button');   
     stealthLikeButton.hide();
 
