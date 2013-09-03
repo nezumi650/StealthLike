@@ -1,5 +1,12 @@
 //'use strict';
 
+// ==UserScript==
+// @name                Stealth Like
+// @namespace	        https://github.com/nezumi650/StealthLike
+// @description	        溢れる賞賛の気持ちを、そっとプログラムに添えるためのスクリプトです @TODO 英語に翻訳する
+// @include             https://github.com/*
+// ==/UserScript==
+
 var defaultComment = 'Stealth Liked';
 
 // add a stealth-like-button
