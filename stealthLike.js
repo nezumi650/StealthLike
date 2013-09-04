@@ -1,5 +1,3 @@
-//'use strict';
-
 // ==UserScript==
 // @name                Stealth Like
 // @namespace           https://github.com/nezumi650/StealthLike
@@ -8,6 +6,8 @@
 // ==/UserScript==
 
 (function() {
+
+    //'use strict';
 
     var defaultComment = 'Stealth Liked';
 
