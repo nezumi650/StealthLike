@@ -102,15 +102,17 @@
 
         function addLikedIcon(likedAvatarArray) {
             for (var i = 0; i < likedAvatarArray.length; i++) {
-                var targetSpanElement = document.querySelector('.liked-comments-' + likedAvatarArray[i][0]);
-                if (targetSpanElement) {
-                    var miniAvatar = document.createElement('img');
-                    miniAvatar.src = likedAvatarArray[i][1];
-                    miniAvatar.width  = 20;
-                    miniAvatar.height = 20;
-                    miniAvatar.style.cssText = 'padding: 2px;'
-                                             + 'background-color:#ffff99;'
-                    targetSpanElement.appendChild(miniAvatar);
+                var targetSpanElements = document.querySelectorAll('.liked-comments-' + likedAvatarArray[i][0]);
+                if (targetSpanElements) {
+                    for (var j = 0; j < targetSpanElements.length; j++) {
+                        var miniAvatar = document.createElement('img');
+                        miniAvatar.src = likedAvatarArray[i][1];
+                        miniAvatar.width  = 20;
+                        miniAvatar.height = 20;
+                        miniAvatar.style.cssText = 'padding: 2px;'
+                                                 + 'background-color:#ffff99;'
+                        targetSpanElements[j].appendChild(miniAvatar);
+                    }
                 }
             }
         }
