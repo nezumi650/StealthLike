@@ -31,7 +31,7 @@
     var postLikeComment = function(commentObj) {
         var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^=\'comment_body_\']' );
 
-        if (location.href.match(/files/)) {
+        if (location.pathname.match(/files/)) {
             var splitedParentTrId = commentObj.anchorNode.parentNode.parentNode.id.split('-');
             var fileExpansion     = splitedParentTrId[splitedParentTrId.length - 2];
 
