@@ -11,12 +11,6 @@
 
     'use strict';
 
-    var currentUrlHoge = location.href;
-    var isGithub      = currentUrlHoge.match(/github\.com.*pull/);
-    var isCommitsPage = currentUrlHoge.match(/commits$/);
-
-    if (isGithub && !isCommitsPage) {
-
         var defaultCommentForComments = 'Stealth Liked';
         var defaultCommentForDiff     = 'Nice Code!';
 
@@ -147,6 +141,5 @@
 
         hideStealthComments();
 
-    }
 
 })();
