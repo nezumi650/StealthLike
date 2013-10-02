@@ -2,17 +2,20 @@
 // @name                Stealth Like
 // @namespace           https://github.com/nezumi650/StealthLike
 // @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです @TODO 英語に翻訳する
-// @include             https:///github.com/*/*/pull/*
+// @include             https://github.com/*/*/pull/*
+// @version             1
+// @grant               none
 // ==/UserScript==
 
 (function() {
 
-    var currentUrl    = location.href;
-    var isGithub      = currentUrl.match(/github\.com.*pull/);
-    var isCommitsPage = currentUrl.match(/commits$/);
-    if (isGithub && !isCommitsPage) {
+    'use strict';
 
-       'use strict';
+    var currentUrlHoge = location.href;
+    var isGithub      = currentUrlHoge.match(/github\.com.*pull/);
+    var isCommitsPage = currentUrlHoge.match(/commits$/);
+
+    if (isGithub && !isCommitsPage) {
 
         var defaultCommentForComments = 'Stealth Liked';
         var defaultCommentForDiff     = 'Nice Code!';
@@ -31,7 +34,7 @@
         footerElement.appendChild(buttonElement);
 
 
-        function postLikeComment(commentObj) {
+        var postLikeComment = function(commentObj) {
             var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^=\'comment_body_\']' );
 
             if (location.href.match(/files/)) {
@@ -49,7 +52,7 @@
             submitButton.dispatchEvent( mouseEvents );
         }
 
-        function hideStealthComments() {
+        var hideStealthComments = function() {
             var discussionBubbles = document.querySelectorAll('.discussion-bubble');
             var targetTextsArray  = [];
             var likedAvatarArray  = [];
@@ -68,7 +71,10 @@
                                 targetTextsArray.push(blockquoteText);
                                 commentNumber = targetTextsArray.length - 1;
                             }
-                            likedAvatarArray.push(new Array(commentNumber, discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src')));
+                            if (likedAvatarArray[commentNumber] == undefined) {
+                                likedAvatarArray[commentNumber] = [];
+                            }
+                            likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
                         }                        
                         discussionBubble.style.display = 'none';
                         discussionBubble.remove();
@@ -80,13 +86,13 @@
             addLikedIcon(likedAvatarArray);
         }
 
-        function hilightStealthComment(targetHtml, targetText, commentNumber) {
-            addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
+        var hilightStealthComment = function(targetHtml, targetText, commentNumber) {
+            var addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
             var reg = new RegExp(addslashesTargetText, 'g');
-            return targetHtml.replace(reg, '<span style=\'background-color:#ffff99\' class=\'liked-comments-' + commentNumber + '\'>' + targetText + '</span>');
+            return targetHtml.replace(reg, '<span style=\'background-color:#ffff99\'>' + targetText + '</span><span class=\'liked-comments-' + commentNumber + '\'></span>');
         }
 
-        function hilightStealthComments(targetTextArray) {
+        var hilightStealthComments = function(targetTextArray) {
             var jsDiscussionElement = document.querySelector('.js-discussion');
             var targetHtml          = jsDiscussionElement.innerHTML;
             var replacedHtml        = '';
@@ -100,44 +106,44 @@
         }
 
 
-        function addLikedIcon(likedAvatarArray) {
-            for (var i = 0; i < likedAvatarArray.length; i++) {
-                var targetSpanElements = document.querySelectorAll('.liked-comments-' + likedAvatarArray[i][0]);
-                if (targetSpanElements) {
-                    for (var j = 0; j < targetSpanElements.length; j++) {
+        var addLikedIcon = function(likedAvatarArray) {
+            for (var commentNumber = 0; commentNumber < likedAvatarArray.length; commentNumber++) {
+                var targetSpanElement = document.querySelector('.liked-comments-' + commentNumber);
+                if (targetSpanElement) {
+                    for (var i = 0; i < likedAvatarArray[commentNumber].length; i++) {
                         var miniAvatar = document.createElement('img');
-                        miniAvatar.src = likedAvatarArray[i][1];
+                        miniAvatar.src = likedAvatarArray[commentNumber][i];
                         miniAvatar.width  = 20;
                         miniAvatar.height = 20;
                         miniAvatar.style.cssText = 'padding: 2px;'
                                                  + 'background-color:#ffff99;'
-                        targetSpanElements[j].appendChild(miniAvatar);
+                        targetSpanElement.appendChild(miniAvatar);
                     }
+                    var buttonElementMini = document.createElement('img');
+                    buttonElementMini.setAttribute("class", 'stealth-like-button-mini');
+                    buttonElementMini.src   = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png';
+                    buttonElementMini.setAttribute("data-stealth-post-value", targetSpanElement.previousSibling.innerHTML);
+                    buttonElementMini.width  = 15;
+                    buttonElementMini.height = 15;
+                    buttonElementMini.style.cssText = 'margin: 2px;'
+                    targetSpanElement.appendChild(buttonElementMini);
                 }
             }
         }
 
-        var stealthLikeButton = $('#stealth-like-button');   
-        stealthLikeButton.hide();
+        var stealthLikeButton = document.getElementById('stealth-like-button');   
 
-        // 少しでもスクロールしたら表示
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 1) {
-                stealthLikeButton.fadeIn();
-            } else {
-                stealthLikeButton.fadeOut();
-            }
-        });
-
-        stealthLikeButton.click(function () {
-            var selection = document.getSelection();
-            if (selection.toString().length) {
-                stealthLikeButton.hide();
-                stealthLikeButton.fadeIn('slow');
-                postLikeComment(selection);
-            }
-            return false;
-        });
+        stealthLikeButton.addEventListener(
+            'click', 
+            function () {
+                var selection = document.getSelection();
+                if (selection.toString().length) {
+                    postLikeComment(selection);
+                }
+                return false;
+            },
+            false
+        );
 
         hideStealthComments();
 
