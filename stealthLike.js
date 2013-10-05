@@ -54,7 +54,7 @@
         for (var i = 0; i < discussionBubbles.length; i++) {
             var discussionBubble = discussionBubbles[i];
             var commentBody      = discussionBubble.querySelector('.comment-body');
-            if (commentBody != null) {
+            if (commentBody) {
                 var commentBodyText = commentBody.textContent;
                 if (commentBodyText.search(defaultCommentForComments) != -1) {
                     var blockquoteBody  = discussionBubble.querySelector('blockquote p');
