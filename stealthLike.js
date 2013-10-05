@@ -59,7 +59,7 @@
                 if (commentBodyText.search(defaultCommentForComments) != -1) {
                     var blockquoteBody  = discussionBubble.querySelector('blockquote p');
                     if (blockquoteBody != null) {
-                        var blockquoteText = blockquoteBody.innerHTML;
+                        var blockquoteText = blockquoteBody.textContent;
                         var commentNumber  = targetTextsArray.indexOf(blockquoteText);
                         if (commentNumber == -1) {
                             targetTextsArray.push(blockquoteText);
@@ -119,7 +119,7 @@
                 buttonElementMini.width     = 15;
                 buttonElementMini.height    = 15;
                 buttonElementMini.style.cssText = 'margin: 2px;'
-                buttonElementMini.dataset.stealthPostValue = targetSpanElement.previousSibling.innerHTML;
+                buttonElementMini.dataset.stealthPostValue = targetSpanElement.previousSibling.textContent;
                 targetSpanElement.appendChild(buttonElementMini);
             }
         }
