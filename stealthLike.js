@@ -71,13 +71,14 @@
                         likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
                     }                        
                     discussionBubble.style.display = 'none';
-                    discussionBubble.remove();
+//                    discussionBubble.remove();
                 }
-
             }
         }
-        hilightStealthComments(targetTextsArray);
-        addLikedIcon(likedAvatarArray);
+        if (targetTextsArray.length > 0) {
+            hilightStealthComments(targetTextsArray);
+            addLikedIcon(likedAvatarArray);
+        }
     }
 
     var hilightStealthComment = function(targetHtml, targetText, commentNumber) {
