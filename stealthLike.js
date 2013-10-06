@@ -66,7 +66,7 @@ window.addEventListener(
                                 targetTextsArray.push(blockquoteText);
                                 commentNumber = targetTextsArray.length - 1;
                             }
-                            if (likedAvatarArray[commentNumber] == undefined) {
+                            if (!likedAvatarArray[commentNumber]) {
                                 likedAvatarArray[commentNumber] = [];
                             }
                             likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
