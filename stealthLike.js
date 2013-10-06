@@ -7,12 +7,16 @@
 // @grant               none
 // ==/UserScript==
 
-(function() {
+'use strict';
+
+window.addEventListener(
+    'load', 
+    function () {
 
     'use strict';
 
     var defaultCommentForComments = 'Stealth Liked';
-    var defaultCommentForDiff     = 'Nice Code!';
+    var defaultCommentForDiff     = 'Nice!';
 
     // add a stealth-like-button
     var buttonElement = document.createElement('img');
@@ -126,8 +130,25 @@
         }
     }
 
-    var stealthLikeButton = document.getElementById('stealth-like-button');   
+    hideStealthComments();
 
+    var stealthLikeButtonMini = document.getElementsByClassName('stealth-like-button-mini');
+    for (var i = 0; i < stealthLikeButtonMini.length; i++) {
+        var selection = stealthLikeButtonMini[i].dataset.stealthPostValue;
+
+        stealthLikeButtonMini[i].addEventListener(
+            'click', 
+            function () {
+                var selection = this.dataset.stealthPostValue;
+                if (selection.toString().length) {
+                    postLikeComment(selection);
+                }
+            },
+            false
+        );
+    }
+
+    var stealthLikeButton = document.getElementById('stealth-like-button');   
     stealthLikeButton.addEventListener(
         'click', 
         function () {
@@ -135,12 +156,10 @@
             if (selection.toString().length) {
                 postLikeComment(selection);
             }
-            return false;
         },
         false
     );
 
-    hideStealthComments();
-
-
-})();
+    },
+    false
+);
