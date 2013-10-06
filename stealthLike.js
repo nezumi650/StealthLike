@@ -48,7 +48,7 @@ window.addEventListener(
         var mouseEvents  = document.createEvent('MouseEvents');
         mouseEvents.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         submitButton.dispatchEvent( mouseEvents );
-    }
+    };
 
     var hideStealthComments = function() {
         var discussionBubbles = document.querySelectorAll('.discussion-bubble');
@@ -83,13 +83,13 @@ window.addEventListener(
             hilightStealthComments(targetTextsArray);
             addLikedIcon(likedAvatarArray);
         }
-    }
+    };
 
     var hilightStealthComment = function(targetHtml, targetText, commentNumber) {
         var addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
         var reg = new RegExp(addslashesTargetText, 'g');
         return targetHtml.replace(reg, '<span style=\'background-color:#ffff99\'>' + targetText + '</span><span class=\'liked-comments-' + commentNumber + '\'></span>');
-    }
+    };
 
     var hilightStealthComments = function(targetTextArray) {
         var jsDiscussionElement = document.querySelector('.js-discussion');
@@ -102,7 +102,7 @@ window.addEventListener(
             targetHtml     = replacedHtml;
         }
         document.querySelector('.js-discussion').innerHTML = replacedHtml;
-    }
+    };
 
 
     var addLikedIcon = function(likedAvatarArray) {
@@ -128,7 +128,7 @@ window.addEventListener(
                 targetSpanElement.appendChild(buttonElementMini);
             }
         }
-    }
+    };
 
     hideStealthComments();
 
