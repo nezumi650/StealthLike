@@ -1,32 +1,30 @@
 feel free to push :)
 
-@TODO 英語にする
 
 # stealthLike.js
 
-プルリクエストをレビューしていると、
-私たちはたびたび、レビューコメントやプログラムの diff に「いいね！」したくてたまらなくなります。
+When we review Pull Requests,
+We often want to _LIKE_ a review comment or diff lines.
 
-stealthLike.js は、その願いをかなえるために作られたスクリプトです。
+stealthLike.js is the script to carry out our wish.
 
-## 使い方
+## Usage
 
-* プルリクエスト画面で、「いいね！」したい箇所を範囲選択します。
-	* @TODO画像添付
-* 画面左下の StealthLike アイコンをクリックします。
-	* @TODO画像添付
+* On a pull request page, drag the pointer to a designated area to _LIKE_.
+    * @TODO add image
+* Click StealthLike icon at the lower left coner.
+    * @TODO add image
 
-## インストール方法
+## Installation
 
-#### Chrome の場合
-* (1) 下記 URL 上で右クリック > リンク先を別名で保存 > 拡張子を .user.js にして保存
-  * @TODO stealthLike.js の master の Raw のパスを記述
+### Chrome
 
-* (2) ツール > 拡張機能ページへ 保存した js ファイルをドラッグ＆ドロップ
+1. Right-click below URL > Save As.. > change extension to `.user.js` and save.
+    * @TODO write the path to stealLike.js on master branch.
+2. Drag and drop the JS file into Tools > Entensions.
 
-#### Firefox の場合
-* (1) Firefox アドオン「Greasemonkey」をインストール
-  * https://addons.mozilla.org/ja/firefox/addon/greasemonkey/
-* (2) 下記 URL をクリックして、ユーザースクリプトをインストール
-  * @TODO stealthLike.js の master のパスを記述
+### Firefox
 
+1. Install the Firefox Add-on [_Greasemonkey_](https://addons.mozilla.org/ja/firefox/addon/greasemonkey/).
+2. Click below URL and install user script.
+    * @TODO write the path to stealLike.js on master branch.
