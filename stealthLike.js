@@ -72,7 +72,7 @@ window.addEventListener(
                             likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
                         }                        
                         discussionBubble.style.display = 'none';
-//                        discussionBubble.remove();
+                        discussionBubble.parentNode.removeChild(discussionBubble);
                     }
                 }
             }
