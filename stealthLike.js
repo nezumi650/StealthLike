@@ -140,16 +140,29 @@ window.addEventListener(
             }
         };
 
-        hideStealthComments();
+        var stealthLikeMain = function stealthLikeMain() {
+            hideStealthComments();
 
-        var stealthLikeButtonMini = document.getElementsByClassName('stealth-like-button-mini');
-        for (var i = 0; i < stealthLikeButtonMini.length; i++) {
-            var selection = stealthLikeButtonMini[i].dataset.stealthPostValue;
+            var stealthLikeButtonMini = document.getElementsByClassName('stealth-like-button-mini');
+            for (var i = 0; i < stealthLikeButtonMini.length; i++) {
+                var selection = stealthLikeButtonMini[i].dataset.stealthPostValue;
+                stealthLikeButtonMini[i].addEventListener(
+                    'click',
+                    function () {
+                        var selection = this.dataset.stealthPostValue;
+                        if (selection.toString().length) {
+                            postLikeComment(selection);
+                        }
+                    },
+                    false
+                );
+            }
 
-            stealthLikeButtonMini[i].addEventListener(
+            var stealthLikeButton = document.getElementById('stealth-like-button');
+            stealthLikeButton.addEventListener(
                 'click', 
                 function () {
-                    var selection = this.dataset.stealthPostValue;
+                    var selection = document.getSelection();
                     if (selection.toString().length) {
                         postLikeComment(selection);
                     }
@@ -158,15 +171,11 @@ window.addEventListener(
             );
         }
 
-        var stealthLikeButton = document.getElementById('stealth-like-button');   
-        stealthLikeButton.addEventListener(
-            'click', 
-            function () {
-                var selection = document.getSelection();
-                if (selection.toString().length) {
-                    postLikeComment(selection);
-                }
-            },
+
+        stealthLikeMain();
+        window.addEventListener(
+            'DOMNodeInserted',
+            stealthLikeMain,
             false
         );
 
