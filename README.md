@@ -1,6 +1,3 @@
-feel free to push :)
-
-
 # stealthLike.js
 
 When we review Pull Requests,
