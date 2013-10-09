@@ -30,7 +30,7 @@ window.addEventListener(
 
 
         var postLikeComment = function postLikeComment(commentObj) {
-            var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^=\'comment_body_\']' );
+            var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
 
             if (location.pathname.match(/files/)) {
                 var splitedParentTrId = commentObj.anchorNode.parentNode.parentNode.id.split('-');
@@ -41,7 +41,7 @@ window.addEventListener(
                 commentForm.value = defaultCommentForComments + ' :+1:' + "\n" + ' > ' + commentObj.toString();
             }
 
-            var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type=\'submit\']:last-child');
+            var submitButton = document.querySelector('#discussion_bucket .js-new-comment-form button[type="submit"]:last-child');
             var mouseEvents  = document.createEvent('MouseEvents');
             mouseEvents.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             submitButton.dispatchEvent( mouseEvents );
