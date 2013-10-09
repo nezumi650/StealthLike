@@ -54,26 +54,19 @@ window.addEventListener(
 
             for (var i = 0; i < discussionBubbles.length; i++) {
                 var discussionBubble = discussionBubbles[i];
-                var commentBody      = discussionBubble.querySelector('.comment-body');
-                if (commentBody) {
-                    var commentBodyText = commentBody.textContent;
-                    if (commentBodyText.search(defaultCommentForComments) !== -1) {
-                        var blockquoteBody  = discussionBubble.querySelector('blockquote p');
-                        if (blockquoteBody != null) {
-                            var blockquoteText = blockquoteBody.textContent;
-                            var commentNumber  = targetTextsArray.indexOf(blockquoteText);
-                            if (commentNumber === -1) {
-                                targetTextsArray.push(blockquoteText);
-                                commentNumber = targetTextsArray.length - 1;
-                            }
-                            if (!likedAvatarArray[commentNumber]) {
-                                likedAvatarArray[commentNumber] = [];
-                            }
-                            likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
-                        }                        
-                        discussionBubble.style.display = 'none';
-                        discussionBubble.parentNode.removeChild(discussionBubble);
+                var blockquoteText   = getStealthLikedBlockquoteText(discussionBubble);
+                if (blockquoteText) {
+                    var commentNumber  = targetTextsArray.indexOf(blockquoteText);
+                    if (commentNumber === -1) {
+                        targetTextsArray.push(blockquoteText);
+                        commentNumber = targetTextsArray.length - 1;
                     }
+                    if (!likedAvatarArray[commentNumber]) {
+                        likedAvatarArray[commentNumber] = [];
+                    }
+                    likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
+                    discussionBubble.style.display = 'none';
+                    discussionBubble.parentNode.removeChild(discussionBubble);
                 }
             }
             if (targetTextsArray.length > 0) {
@@ -81,6 +74,26 @@ window.addEventListener(
                 addLikedIcon(likedAvatarArray);
             }
         };
+
+
+        var getStealthLikedBlockquoteText = function(discussionBubble) {
+            if (isStealthLikedDiscussionBubble(discussionBubble)) {
+                var blockquoteBody  = discussionBubble.querySelector('blockquote p');
+                if (blockquoteBody) {
+                    return blockquoteBody.textContent;
+                }
+            }
+            return false;
+        }
+
+        var isStealthLikedDiscussionBubble = function(discussionBubble) {
+            var commentBody = discussionBubble.querySelector('.comment-body');
+            if (commentBody) {
+                var commentBodyText = commentBody.textContent;
+                return (commentBodyText.search(defaultCommentForComments) !== -1);
+            }
+            return false;
+        }
 
         var hilightStealthComment = function(targetHtml, targetText, commentNumber) {
             var addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
