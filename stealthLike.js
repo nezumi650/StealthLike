@@ -131,7 +131,7 @@ window.addEventListener(
                     }
                     var buttonElementMini = document.createElement('img');
                     buttonElementMini.className = 'stealth-like-button-mini';
-                    buttonElementMini.src       = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png';
+                    buttonElementMini.src       = 'https://raw.github.com/nezumi650/StealthLike/master/sample-mini.png';
                     buttonElementMini.width     = 15;
                     buttonElementMini.height    = 15;
                     buttonElementMini.style.cssText = 'margin: 2px;'
