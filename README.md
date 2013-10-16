@@ -40,6 +40,10 @@ stealthLike.js is the script to carry out our wish.<br />
 
 
 ## スペシャルサンクス
-* *コードレビュー* : @2get @h13i32maru @iizukak
-* *画像作成* : @shikakun
-* *英文翻訳* : @iizukak ※現在もう1名依頼中
+* *コードレビュー* : [@2get](https://github.com/2get) [@h13i32maru](https://github.com/h13i32maru) [@iizukak](https://github.com/iizukak)
+* *画像作成* : [@shikakun](https://github.com/shikakun)
+* *英文翻訳* : [@iizukak](https://github.com/iizukak) ※現在もう1名依頼中
+
+-
+
+My first develop: [#1](https://github.com/nezumi650/StealthLike/pull/1)
