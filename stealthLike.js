@@ -17,19 +17,6 @@ window.addEventListener(
 
         var targetTextsArray = [];
 
-        // add a stealth-like-button
-        var buttonElement = document.createElement('img');
-        buttonElement.id = 'stealth-like-button';
-        buttonElement.src = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png'; //@TODO バイナリファイルにする
-        buttonElement.width  = 50;
-        buttonElement.height = 50;
-        buttonElement.style.cssText = 'position: fixed;'
-                                    + 'bottom: 20px;'
-                                    + 'right: 20px;';
-
-        var footerElement = document.querySelector('div .site-footer');
-        footerElement.appendChild(buttonElement);
-
 
         function postLikeComment(commentObj) {
             var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
@@ -169,20 +156,33 @@ window.addEventListener(
                     false
                 );
             }
-
-            var stealthLikeButton = document.getElementById('stealth-like-button');
-            stealthLikeButton.addEventListener(
-                'click', 
-                function () {
-                    var selection = document.getSelection();
-                    if (selection.toString().length) {
-                        postLikeComment(selection);
-                    }
-                },
-                false
-            );
         }
 
+
+        // add a stealth-like-button
+        var stealthLikeButton = document.createElement('img');
+        stealthLikeButton.id = 'stealth-like-button';
+        stealthLikeButton.src = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png'; //@TODO バイナリファイルにする
+        stealthLikeButton.width  = 50;
+        stealthLikeButton.height = 50;
+        stealthLikeButton.style.cssText = 'position: fixed;'
+                                        + 'bottom: 20px;'
+                                        + 'right: 20px;';
+
+        var footerElement = document.querySelector('div .site-footer');
+        footerElement.appendChild(stealthLikeButton);
+
+        stealthLikeButton.addEventListener(
+            'click', 
+            function () {
+                var selection = document.getSelection();
+                if (selection.toString().length) {
+                    postLikeComment(selection);
+                    stealthLikeMain();
+                }
+            },
+            false
+        );
 
         stealthLikeMain();
 
