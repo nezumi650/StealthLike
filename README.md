@@ -1,11 +1,11 @@
 # stealthLike.js
 
-When we review Pull Requests,
-We often want to _LIKE_ a review comment or diff lines.
-*(プルリクエストをレビューしていると、)*
-*(私たちはたびたび、レビューコメントやプログラムの diff に「いいね！」したくてたまらなくなります。)*
-
-stealthLike.js is the script to carry out our wish.
+When we review Pull Requests,<br />
+We often want to _LIKE_ a review comment or diff lines.<br />
+*(プルリクエストをレビューしていると、*<br />
+*私たちはたびたび、レビューコメントやプログラムの diff に「いいね！」したくてたまらなくなります。)*<br />
+<br />
+stealthLike.js is the script to carry out our wish.<br />
 *(stealthLike.js は、その願いをかなえるために作られたスクリプトです。)*
 
 ## Usage
