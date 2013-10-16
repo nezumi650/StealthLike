@@ -11,14 +11,14 @@ stealthLike.js is the script to carry out our wish.<br />
 ## Usage
 
 * On a pull request page, drag the pointer to a designated area to _LIKE_.<br />*(プルリクエスト画面で、「いいね！」したい箇所を範囲選択します。)*
-    * [usage1](https://raw.github.com/nezumi650/StealthLike/master/forREADME/usage1.png)
+    * ![usage1](https://raw.github.com/nezumi650/StealthLike/master/forREADME/usage1.png)
 * Click StealthLike icon at the lower left coner.<br />*(画面左下の StealthLike アイコンをクリックします。)*
-    * [usage2](https://raw.github.com/nezumi650/StealthLike/master/forREADME/usage2.png)
+    * ![usage2](https://raw.github.com/nezumi650/StealthLike/master/forREADME/usage2.png)
 * *(範囲選択した内容が)*
 	* *(コメントであれば、このように表示されます。)*
-		* [sample1](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample1.png)
+		* ![sample1](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample1.png)
 	* *(プログラムの diff であれば、このように表示されます。)*
-		* [sample2](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample2.png)
+		* ![sample2](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample2.png)
 
 ## Installation
 
