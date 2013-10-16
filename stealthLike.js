@@ -15,6 +15,8 @@ window.addEventListener(
         var defaultCommentForComments = 'Stealth Liked';
         var defaultCommentForDiff     = 'Nice!';
 
+        var targetTextsArray = [];
+
         // add a stealth-like-button
         var buttonElement = document.createElement('img');
         buttonElement.id = 'stealth-like-button';
@@ -49,9 +51,9 @@ window.addEventListener(
         };
 
         function hideStealthComments() {
-            var discussionBubbles = document.querySelectorAll('.discussion-bubble');
-            var targetTextsArray  = [];
-            var likedAvatarArray  = [];
+            var discussionBubbles   = document.querySelectorAll('.discussion-bubble');
+            var targetTextsArrayTmp = [];
+            var likedAvatarArrayTmp = [];
 
             for (var i = 0; i < discussionBubbles.length; i++) {
                 var discussionBubble = discussionBubbles[i];
@@ -60,19 +62,23 @@ window.addEventListener(
                     var commentNumber  = targetTextsArray.indexOf(blockquoteText);
                     if (commentNumber === -1) {
                         targetTextsArray.push(blockquoteText);
+                        targetTextsArrayTmp.push(blockquoteText);
                         commentNumber = targetTextsArray.length - 1;
                     }
-                    if (!likedAvatarArray[commentNumber]) {
-                        likedAvatarArray[commentNumber] = [];
+                    if (!likedAvatarArrayTmp[commentNumber]) {
+                        likedAvatarArrayTmp[commentNumber] = [];
                     }
-                    likedAvatarArray[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
+                    likedAvatarArrayTmp[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
                     discussionBubble.style.display = 'none';
                     discussionBubble.parentNode.removeChild(discussionBubble);
                 }
             }
-            if (targetTextsArray.length > 0) {
-                hilightStealthComments(targetTextsArray);
-                addLikedIcon(likedAvatarArray);
+            
+            if (targetTextsArrayTmp.length > 0) {
+                hilightStealthComments(targetTextsArrayTmp);
+            }
+            if (likedAvatarArrayTmp.length > 0) {
+                addLikedIcon(likedAvatarArrayTmp);
             }
         };
 
@@ -117,26 +123,30 @@ window.addEventListener(
 
 
         function addLikedIcon(likedAvatarArray) {
-            for (var commentNumber = 0; commentNumber < likedAvatarArray.length; commentNumber++) {
+            for (var i = 0; i < likedAvatarArray.length; i++) {
+                var commentNumber = likedAvatarArray.indexOf(likedAvatarArray[i]);
                 var targetSpanElement = document.querySelector('.liked-comments-' + commentNumber);
                 if (targetSpanElement) {
-                    for (var i = 0; i < likedAvatarArray[commentNumber].length; i++) {
+                    var buttonElementMini = document.getElementById('stealth-like-button-mini-' + commentNumber);
+                    if (!buttonElementMini) {
+                        var buttonElementMini = document.createElement('img');
+                        buttonElementMini.id        = 'stealth-like-button-mini-' + commentNumber;
+                        buttonElementMini.src       = 'https://raw.github.com/nezumi650/StealthLike/master/sample-mini.png';
+                        buttonElementMini.width     = 15;
+                        buttonElementMini.height    = 15;
+                        buttonElementMini.style.cssText = 'margin: 2px;'
+                        buttonElementMini.dataset.stealthPostValue = targetSpanElement.previousSibling.textContent;
+                        targetSpanElement.appendChild(buttonElementMini);
+                    }
+                    for (var j = 0; j < likedAvatarArray[commentNumber].length; j++) {
                         var miniAvatar = document.createElement('img');
-                        miniAvatar.src = likedAvatarArray[commentNumber][i];
+                        miniAvatar.src = likedAvatarArray[commentNumber][j];
                         miniAvatar.width  = 20;
                         miniAvatar.height = 20;
                         miniAvatar.style.cssText = 'padding: 2px;'
                                                  + 'background-color:#ffff99;'
-                        targetSpanElement.appendChild(miniAvatar);
+                        targetSpanElement.insertBefore(miniAvatar, buttonElementMini);
                     }
-                    var buttonElementMini = document.createElement('img');
-                    buttonElementMini.className = 'stealth-like-button-mini';
-                    buttonElementMini.src       = 'https://raw.github.com/nezumi650/StealthLike/master/sample-mini.png';
-                    buttonElementMini.width     = 15;
-                    buttonElementMini.height    = 15;
-                    buttonElementMini.style.cssText = 'margin: 2px;'
-                    buttonElementMini.dataset.stealthPostValue = targetSpanElement.previousSibling.textContent;
-                    targetSpanElement.appendChild(buttonElementMini);
                 }
             }
         };
@@ -144,7 +154,8 @@ window.addEventListener(
         function stealthLikeMain() {
             hideStealthComments();
 
-            var stealthLikeButtonMini = document.getElementsByClassName('stealth-like-button-mini');
+            var stealthLikeButtonMini = document.querySelectorAll( '[id^="stealth-like-button-mini"]');
+
             for (var i = 0; i < stealthLikeButtonMini.length; i++) {
                 var selection = stealthLikeButtonMini[i].dataset.stealthPostValue;
                 stealthLikeButtonMini[i].addEventListener(
@@ -174,6 +185,7 @@ window.addEventListener(
 
 
         stealthLikeMain();
+
         window.addEventListener(
             'DOMNodeInserted',
             stealthLikeMain,
