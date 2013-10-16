@@ -46,11 +46,11 @@ window.addEventListener(
                 var discussionBubble = discussionBubbles[i];
                 var blockquoteText   = getStealthLikedBlockquoteText(discussionBubble);
                 if (blockquoteText) {
-                    var commentNumber  = targetTextsArray.indexOf(blockquoteText);
+                    var commentNumber = targetTextsArray.indexOf(blockquoteText);
                     if (commentNumber === -1) {
                         targetTextsArray.push(blockquoteText);
-                        targetTextsArrayTmp.push(blockquoteText);
                         commentNumber = targetTextsArray.length - 1;
+                        targetTextsArrayTmp.push({'commentNumber': commentNumber, 'targetText': blockquoteText});
                     }
                     if (!likedAvatarArrayTmp[commentNumber]) {
                         likedAvatarArrayTmp[commentNumber] = [];
@@ -60,7 +60,7 @@ window.addEventListener(
                     discussionBubble.parentNode.removeChild(discussionBubble);
                 }
             }
-            
+
             if (targetTextsArrayTmp.length > 0) {
                 hilightStealthComments(targetTextsArrayTmp);
             }
@@ -95,15 +95,17 @@ window.addEventListener(
             return targetHtml.replace(reg, '<span style=\'background-color:#ffff99\'>' + targetText + '</span><span class=\'liked-comments-' + commentNumber + '\'></span>');
         };
 
-        function hilightStealthComments(targetTextArray) {
+        function hilightStealthComments(targetTextsArrayTmp) {
             var jsDiscussionElement = document.querySelector('.js-discussion');
             var targetHtml          = jsDiscussionElement.innerHTML;
             var replacedHtml        = '';
 
-            for (var commentNumber = 0; commentNumber < targetTextArray.length; commentNumber++) {
-                var targetText = targetTextArray[commentNumber];
-                replacedHtml   = hilightStealthComment(targetHtml, targetText, commentNumber);
-                targetHtml     = replacedHtml;
+            for (var i = 0; i < targetTextsArrayTmp.length; i++) {
+                var targetTextRow = targetTextsArrayTmp[i];
+                var commentNumber = targetTextRow['commentNumber'];
+                var targetText    = targetTextRow['targetText'];
+                replacedHtml      = hilightStealthComment(targetHtml, targetText, commentNumber);
+                targetHtml        = replacedHtml;
             }
             document.querySelector('.js-discussion').innerHTML = replacedHtml;
         };
@@ -156,6 +158,7 @@ window.addEventListener(
                     false
                 );
             }
+
         }
 
 
