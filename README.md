@@ -22,7 +22,7 @@ stealthLike.js is the script to carry out our wish.<br />
 
 1. Right-click below URL > Save As.. > change extension to `.user.js` and save.<br />*(下記 URL 上で右クリック > リンク先を別名で保存 > 拡張子を .user.jsにして保存)*
     * https://raw.github.com/nezumi650/StealthLike/master/stealthLike.js
-2. Drag and drop the JS file into Tools > Entensions.<br />*(ツール > 拡張機能ページへ 保存した js ファイルをドラッグ＆ドロップ)*
+2. Drag the downloaded script onto the Extensions page<br />*(環境設定 > 拡張機能ページへ 保存した js ファイルをドラッグ＆ドロップ)*
 
 ### Firefox
 
