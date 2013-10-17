@@ -32,7 +32,7 @@ stealthLike.js is the script to carry out our wish.<br />
 
 #### safari, Opera, IE and more
 
-1. install Chrome or Firefox :)<br />*(お察しください)*
+1. Install Chrome or Firefox :)<br />*(お察しください)*
 
 
 ## 備考
