@@ -1,4 +1,4 @@
-# stealthLike.js
+# StealthLike.js
 
 When we review Pull Requests,<br />
 We often want to _LIKE_ a review comment or diff lines.<br />
@@ -46,4 +46,5 @@ stealthLike.js is the script to carry out our wish.<br />
 
 -
 
-My first develop: [#1](https://github.com/nezumi650/StealthLike/pull/1)
+* My first develop: [#1](https://github.com/nezumi650/StealthLike/pull/1)
+* Pull Requests for test: https://github.com/nezumi650/testForStealthLike/pull/3
