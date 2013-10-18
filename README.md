@@ -22,7 +22,7 @@ Seeing is believing.<br />*(百聞は一見に如かず。)*
 
 Just try it on the pull request below:<br />*(下のプルリクエストで試してみましょう。)*
 
-https://github.com/nezumi650/StealthLike/issues/10
+https://github.com/nezumi650/StealthLike/pull/12
 
 ## Installation
 
