@@ -12,7 +12,7 @@
 window.addEventListener(
     'load', 
     function () {
-        var defaultCommentForComments = 'Stealth Liked';
+        var defaultCommentForComments = 'Liked stealthily';
         var defaultCommentForDiff     = 'Nice!';
 
         var targetTextsArray = [];
