@@ -1,3 +1,7 @@
+All work and no play makes Jack a dull boy.
+
+----
+
 # StealthLike.js
 
 When we review Pull Requests,<br />
