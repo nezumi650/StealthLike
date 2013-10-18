@@ -16,6 +16,14 @@ stealthLike.js is the script to carry out our wish.<br />
 	* *(コメントであれば、このように表示されます。)*<br />![sample1](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample1.png)
 	* *(プログラムの diff であれば、このように表示されます。)*<br />![sample2](https://raw.github.com/nezumi650/StealthLike/master/forREADME/sample2.png)
 
+### Playground
+
+Seeing is believing.<br />*(百聞は一見に如かず。)*
+
+Just try it on the pull request below:<br />*(下のプルリクエストで試してみましょう。)*
+
+https://github.com/nezumi650/StealthLike/issues/10
+
 ## Installation
 
 ### Chrome
@@ -33,7 +41,6 @@ stealthLike.js is the script to carry out our wish.<br />
 #### safari, Opera, IE and more
 
 1. Install Chrome or Firefox :)<br />*(お察しください)*
-
 
 ## 備考
 * *(「いいね！」した内容は、該当プルリクエストのコメントとして保存されます。<br />あなたの大切なプログラムが、外部に漏れてしまう事はありません。)*
