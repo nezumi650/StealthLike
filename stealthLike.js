@@ -84,7 +84,7 @@ window.addEventListener(
             var commentBody = discussionBubble.querySelector('.comment-body');
             if (commentBody) {
                 var commentBodyText = commentBody.textContent;
-                return (commentBodyText.search(defaultCommentForComments) !== -1);
+                return (commentBodyText.search(defaultCommentForComments) !== -1 || commentBodyText.search('Stealth Liked') !== -1); //困る人がいたので、しばらくは旧defaultCommentForCommentsにも対応する
             }
             return false;
         }
