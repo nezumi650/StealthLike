@@ -173,6 +173,10 @@ window.addEventListener(
                                         + 'right: 20px;';
 
         var footerElement = document.querySelector('div .site-footer');
+        if (!footerElement) {
+            // ghe
+            footerElement = document.getElementById('footer');
+        }
         footerElement.appendChild(stealthLikeButton);
 
         stealthLikeButton.addEventListener(
