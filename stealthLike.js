@@ -3,6 +3,7 @@
 // @namespace           https://github.com/nezumi650/StealthLike
 // @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです @TODO 英語に翻訳する
 // @include             https://github.com/*/*/pull/*
+// @include             https://github.com/*/*/issues/*
 // @version             1
 // @grant               none
 // ==/UserScript==
