@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Stealth Like
 // @namespace           https://github.com/nezumi650/StealthLike
-// @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです @TODO 英語に翻訳する
+// @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです
 // @include             https://github.com/*/*/pull/*
 // @include             https://github.com/*/*/issues/*
 // @version             1
@@ -166,7 +166,7 @@ window.addEventListener(
         // add a stealth-like-button
         var stealthLikeButton = document.createElement('img');
         stealthLikeButton.id = 'stealth-like-button';
-        stealthLikeButton.src = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png'; //@TODO バイナリファイルにする
+        stealthLikeButton.src = 'https://raw.github.com/nezumi650/StealthLike/master/sample.png';
         stealthLikeButton.width  = 50;
         stealthLikeButton.height = 50;
         stealthLikeButton.style.cssText = 'position: fixed;'
