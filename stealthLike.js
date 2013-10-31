@@ -91,7 +91,7 @@ window.addEventListener(
         }
 
         function hilightStealthComment(targetHtml, targetText, commentNumber) {
-            var addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
+            var addslashesTargetText = targetText.replace(/[\^\[\]\-\?\{\}\$\|\!\\\"\'\.\,\=\(\)\/\;\+\*]/g, '\\$&').replace(/\u0000/g, '\\0').replace(/\s/g, '\\s');
             var reg = new RegExp(addslashesTargetText, 'g');
             return targetHtml.replace(reg, '<span style=\'background-color:#ffff99\'>' + targetText + '</span><span class=\'liked-comments-' + commentNumber + '\'></span>');
         };
