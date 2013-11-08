@@ -2,8 +2,8 @@
 // @name                Stealth Like
 // @namespace           https://github.com/nezumi650/StealthLike
 // @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです
-// @include             https://github.com/*/*/pull/*
-// @include             https://github.com/*/*/issues/*
+// @include             */pull/*
+// @include             */issues/*
 // @version             1
 // @grant               none
 // ==/UserScript==
