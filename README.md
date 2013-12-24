@@ -51,6 +51,10 @@ https://github.com/nezumi650/StealthLike/pull/12
 * *画像作成* : [@shikakun](https://github.com/shikakun)
 * *英文翻訳* : [@iizukak](https://github.com/iizukak) ※現在もう1名依頼中
 
+## License
+
+* MIT
+
 -
 
 * My first develop: [#1](https://github.com/nezumi650/StealthLike/pull/1)
