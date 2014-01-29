@@ -21,10 +21,9 @@ window.addEventListener(
 
         function postLikeComment(commentObj) {
             var commentForm = document.querySelector( '#discussion_bucket .js-new-comment-form [id^="comment_body_"]' );
-
             if (location.pathname.match(/files/)) {
-                var splitedParentTrId = commentObj.anchorNode.parentNode.parentNode.id.split('-');
-                var fileExpansion     = splitedParentTrId[splitedParentTrId.length - 2];
+                var splitedFileName = commentObj.anchorNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.meta').dataset.path.split('.');
+                var fileExpansion   = splitedFileName[splitedFileName.length - 1];
 
                 commentForm.value = defaultCommentForDiff + ' :+1:' + "\n\n```" + fileExpansion + "\n" + commentObj.toString() + "\n```";
             } else {
