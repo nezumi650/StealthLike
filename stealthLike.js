@@ -4,7 +4,7 @@
 // @description         溢れる賞賛の気持ちを、そっと添えるためのスクリプトです
 // @include             */pull/*
 // @include             */issues/*
-// @version             1
+// @version             2
 // @grant               none
 // ==/UserScript==
 
@@ -39,7 +39,7 @@ window.addEventListener(
         };
 
         function hideStealthComments() {
-            var discussionBubbles   = document.querySelectorAll('.discussion-bubble');
+            var discussionBubbles   = document.querySelectorAll('.timeline-comment-wrapper');
             var targetTextsArrayTmp = [];
             var likedAvatarArrayTmp = [];
 
@@ -56,7 +56,7 @@ window.addEventListener(
                     if (!likedAvatarArrayTmp[commentNumber]) {
                         likedAvatarArrayTmp[commentNumber] = [];
                     }
-                    likedAvatarArrayTmp[commentNumber].push(discussionBubble.querySelector('.discussion-bubble-avatar').getAttribute('src'));
+                    likedAvatarArrayTmp[commentNumber].push(discussionBubble.querySelector('.timeline-comment-avatar').getAttribute('src'));
                     discussionBubble.style.display = 'none';
                     discussionBubble.parentNode.removeChild(discussionBubble);
                 }
