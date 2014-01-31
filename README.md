@@ -1,3 +1,8 @@
+All work and no play makes Jack a dull boy.<br />*(よく学びよく遊べ)*
+
+
+----
+
 # StealthLike.js
 
 When we review Pull Requests,<br />
