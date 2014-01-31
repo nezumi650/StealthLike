@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "StealthLike",
     "version": "2.1",
-    "description": "When we review Pull Requests, We often want to LIKE a review comment or diff lines. stealthLike.js is the script to carry out our wish.",
+    "description": "When we review Pull Requests, We often want to LIKE a review comment or diff lines. StealthLike is the script to carry out our wish.",
     "icons": {
         "16":  "icons/StealthLike_icon_ChromeExtension_16x16.png",
         "32":  "icons/StealthLike_icon_ChromeExtension_32x32.png",
