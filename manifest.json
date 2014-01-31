@@ -11,11 +11,10 @@
     },
     "content_scripts": [{
         "matches": [
-            "http://*/**/issues/*",
-            "http://*/**/pull/*",
             "https://*/**/issues/*",
             "https://*/**/pull/*",
-            "http://*/**/*"
+            "http://*/**/issues/*",
+            "http://*/**/pull/*"
         ],
         "js": [
             "stealthLike.js"
